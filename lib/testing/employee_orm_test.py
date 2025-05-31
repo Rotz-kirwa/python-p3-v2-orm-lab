@@ -1,7 +1,7 @@
 from __init__ import CONN, CURSOR
 from employee import Employee
 from department import Department
-from faker import Faker
+# from faker import Faker
 import pytest
 
 
@@ -135,10 +135,9 @@ class TestEmployee:
         department = Department("Payroll", "Building A, 5th Floor")
         department.save()
         Employee.create_table()
-        faker = Faker()
-        employee1 = Employee.create(faker.name(), "Manager", department.id)
+        employee1 = Employee.create("John Smith", "Manager", department.id)
         employee2 = Employee.create(
-            faker.name(), "Web Developer", department.id)
+            "Jane Doe", "Web Developer", department.id)
 
         employee = Employee.find_by_id(employee1.id)
         assert (
@@ -164,10 +163,9 @@ class TestEmployee:
         department = Department("Payroll", "Building A, 5th Floor")
         department.save()
         Employee.create_table()
-        faker = Faker()
-        employee1 = Employee.create(faker.name(), "Manager", department.id)
+        employee1 = Employee.create("Alex Johnson", "Manager", department.id)
         employee2 = Employee.create(
-            faker.name(), "Web Developer", department.id)
+            "Sam Wilson", "Web Developer", department.id)
 
         employee = Employee.find_by_name(employee1.name)
         assert (
